@@ -18,4 +18,3 @@ water = {'ph':'5.400301780729467',
 
 response = requests.post(url, json=water).json()
 print('Water potability predicted : %f' % response['water_potability'])
-

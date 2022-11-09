@@ -21,31 +21,28 @@ output_file = f'model.bin'
 
 # LOAD THE DATA
 path = os.getcwd()
-df = pd.read_csv('\data\water_potability.csv')
+df = pd.read_csv(path+'\data\water_potability.csv')
 
 
 # CLEAN COLUMNS
 df.columns = df.columns.str.lower().str.replace(' ', '_')
 
 
-# Convert the Price array from Taka to Euro value
-df['price'] = df['price'].astype('float32')
-df['price'] = df['price'] * 0.010
-
+# CLEAN DATA
 
 
 # PREPARE DATASETS (60-20-20)
-
-numerical = ['size_by_inch']
-categorical = ['restaurant', 'extra_cheeze', 'extra_mushroom', 'extra_spicy']
+categorical = df.select_dtypes(include="object").columns.tolist()
+numerical = df.select_dtypes(exclude="object").columns.tolist()
 
 df_full_train, df_test = train_test_split(df, test_size=0.2, random_state=random_state_value)
 
 df_full_train = df_full_train.reset_index(drop=True)
 
-y_full_train = df_full_train.price.values
+y_full_train = df_full_train.potability.values
 
-del df_full_train['price']
+del df_full_train['potability']
+numerical.pop()
 
 full_train_dicts = df_full_train[categorical + numerical].to_dict(orient='records')
 
@@ -53,7 +50,7 @@ dv = DictVectorizer(sparse=False)
 
 X_full_train = dv.fit_transform(full_train_dicts)
 
-features = dv.get_feature_names()
+features = dv.get_feature_names_out()
 dfulltrain = xgb.DMatrix(X_full_train, label=y_full_train, feature_names=features)
 
 

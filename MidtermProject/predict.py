@@ -10,22 +10,22 @@ model_file = 'model.bin'
 with open(model_file, 'rb') as f_in:
 	dv, model = pickle.load(f_in)
 
-app = Flask('project_pizza')
+app = Flask('water_potability')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-	pizza = request.get_json()
+	water = request.get_json()
 	
-	X = dv.transform([pizza])
+	X = dv.transform([water])
 
-	features = dv.get_feature_names()
+	features = dv.get_feature_names_out()
 	DMatrixPred = xgb.DMatrix(X, feature_names=features)
 
 	y_pred = model.predict(DMatrixPred)
-	price = y_pred
+	water_potability = y_pred
 	
 	result = {
-		'price': float(price),
+		'water_potability': float(water_potability),
 	}
 	
 	return jsonify(result)

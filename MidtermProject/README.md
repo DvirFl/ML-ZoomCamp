@@ -1,7 +1,7 @@
 # ML Midterm Project - Water Potabilty Prediction
 
-# Exclaimer
-	This read me file has been modified from the Midterm Project Pizza Prices
+# Disclaimer
+	This README.md file has been modified from the Midterm Project Pizza Prices written by for 2021 cohort
 
 # Summary
 1. Problem Description
@@ -19,7 +19,7 @@ This package contain the following files:
 3. Dockerfile: Docker configuration file
 4. train.py: the notebook exported file in python and transformed in order to generate ai model
 5. model.bin: model and DictVectorize
-6. predict.py: the service whic receive the request of price prediction
+6. predict.py: the service which receive the request of price prediction
 7. request: the request of price determination. Invoke the service and sent the POST request.
 8. water_potabilty.csv: the dataset from Kaggle
 9. README.md: this file with instruction.
@@ -32,12 +32,6 @@ This dataset for practice:
 
 I used this dataset data in order to build a model for water drinkabilty predictions.
 Dataset Columns Decription:
-1. Restaurant: Restaurant Id-Name (categorical variable - String)
-2. Extra Cheese (categorical variable - Yes/No)
-3. Extra Mushroom (categorical variable - Yes/No)
-4. Size by Inch (numerical variable - Int - How big the pizza is)
-5. Extra Spicy (categorical variable - Yes/No)
-6. Price (numerical and target variable, Int, the price was specified in Taka value, during the exercise I convert the price in Euro and set the variable type to Float)
 1. pH value (numerical variable 1.0-14.0) acidic or basic.
 2. Hardnessnumerical variable
 3. Solids (Total dissolved solids - TDS) (numerical variable)
@@ -95,19 +89,22 @@ The scripts are:
 
 #### Request.py
 
->url = 'http://localhost:9090/predict'
+<!-- url = 'http://localhost:9090/predict'
 
->pizza_id = 'project-pizza'
->pizza = {'restaurant': 'B',
-> 'extra_cheeze': 'no',
-> 'extra_mushroom': 'yes',
-> 'size_by_inch': 15,
-> 'extra_spicy': 'yes'}
+water_id = 'water_potability'
+water = {'ph':'5.400301780729467',
+    'hardness':'198.76735125945606',
+    'solids':'21167.500098968772',
+    'chloramines':'10.056852484033495',
+    'sulfate':'323.5963490101317',
+    'conductivity':'444.47888250689795',
+    'organic_carbon':'11.256381166909478',
+    'trihalomethanes':'79.84784281372556',
+    'turbidity':'4.528522696326911'}
 
->response = requests.post(url, json=pizza).json()
-
->print('Pizza predicted Price : %f' % response['price'])
-
+response = requests.post(url, json=water).json()
+print('Water potability predicted : %f' % response['water_potability'])
+ -->
 Data are encapsulated with json and sent to the service (predict.py)
 
 #### Predict.py 
