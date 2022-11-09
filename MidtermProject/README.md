@@ -1,7 +1,9 @@
 # ML Midterm Project - Water Potabilty Prediction
 
 # Disclaimer
-	This README.md file has been modified from the Midterm Project Pizza Prices written by for 2021 cohort
+	This README.md file has been modified from the Midterm Project Pizza Prices written by 
+	https://github.com/GermanoC0/course-ml-zoomcamp/tree/main/07-Midterm%20Project
+	for 2021 cohort
 
 # Summary
 1. Problem Description
