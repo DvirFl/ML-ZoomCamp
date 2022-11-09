@@ -20,7 +20,7 @@ output_file = f'model.bin'
 
 
 # LOAD THE DATA
-path = os.get()
+path = os.getcwd()
 df = pd.read_csv('\data\water_potability.csv')
 
 
