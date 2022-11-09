@@ -7,7 +7,7 @@
 # The ml could be used classify if water is potable.
 # 
 
-
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
@@ -20,7 +20,8 @@ output_file = f'model.bin'
 
 
 # LOAD THE DATA
-df = pd.read_csv('/data/water_potability.csv')
+path = os.get()
+df = pd.read_csv('\data\water_potability.csv')
 
 
 # CLEAN COLUMNS
