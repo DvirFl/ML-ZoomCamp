@@ -3,7 +3,7 @@ from flask import Flask
 from flask import request
 from flask import request
 from flask import jsonify
-import xgboost as xgb
+from sklearn.ensemble import RandomForestRegressor
 
 model_file = 'model.bin'
 
@@ -19,7 +19,7 @@ def predict():
 	X = dv.transform([water])
 
 	features = dv.get_feature_names_out()
-	DMatrixPred = xgb.DMatrix(X, feature_names=features)
+	DMatrixPred = RandomForestRegressor.predict(X, feature_names=features)
 
 	y_pred = model.predict(DMatrixPred)
 	water_potability = y_pred

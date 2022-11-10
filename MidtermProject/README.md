@@ -49,11 +49,10 @@ Dataset Columns Decription:
 I did the following steps:
 1. Check Columns types
 2. Check null and duplicated values
-3. Check and clean format: 
+3. Check and clean format
 4. Convert Potability to boolean
 5. Numerical feature correlation (Heatmap)
 6. Locate and Trim outliers where needed
-7. Check mutual_info_score 
 
 ## 3. Model Training
 1. Subdivide the dataset to 60-20-20 (train, val, test) using scikit-learn libraries

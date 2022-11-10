@@ -11,7 +11,7 @@ import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
-import xgboost as xgb
+from sklearn.ensemble import RandomForestRegressor
 import pickle
 
 # VARIABLES
@@ -51,22 +51,14 @@ dv = DictVectorizer(sparse=False)
 X_full_train = dv.fit_transform(full_train_dicts)
 
 features = dv.get_feature_names_out()
-dfulltrain = xgb.DMatrix(X_full_train, label=y_full_train, feature_names=features)
+
+rf = RandomForestRegressor(random_state=42)
+y_full_train = rf.predict(X_full_train)
 
 
 # TRAIN THE MODEL
 
-xgb_params = {
-    'eta': 0.3,
-    'max_depth': 1,
-    'min_child_weight': 1,
-    'objective': 'reg:squarederror',
-    'nthread': 8,
-    'seed': 1,
-    'verbosity': 1,
-}
-
-model = xgb.train(xgb_params, dfulltrain, num_boost_round=10)
+model = rf.fit(X_full_train,y_full_train)
 
 
 # SAVE THE MODEL TO FILE
