@@ -122,11 +122,11 @@ Manage the service (/predict) and use the model to predict the pizza (sent by PO
 #### Flask test
 1. Run predict.py script
 
-![Flask_Predict_py](Screenshots/flask_predict_py.png)
+![Flask_Predict_py](Screenshots/flask_predict.png)
 
 2. Run request.py script
 
-![Flask_Request_py](Screenshots/flask_request_py.png)
+![Flask_Request_py](Screenshots/flask_request.png)
 
 ## 6. Dependency and enviroment management
 #### Prepare the Virtual Environment with Anaconda3
