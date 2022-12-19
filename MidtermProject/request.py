@@ -3,10 +3,10 @@
 
 import requests
 
-url = 'http://localhost:9090/predict'
+url = 'http://localhost:5000/predict'
 
 water_id = 'water_potability'
-water = {'ph':'5.400301780729467',
+water = {"ph":'5.400301780729467',
     'hardness':'198.76735125945606',
     'solids':'21167.500098968772',
     'chloramines':'10.056852484033495',

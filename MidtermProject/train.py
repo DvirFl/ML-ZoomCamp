@@ -11,7 +11,7 @@ import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
 import pickle
 
 # VARIABLES
@@ -50,16 +50,12 @@ dv = DictVectorizer(sparse=False)
 
 X_full_train = dv.fit_transform(full_train_dicts)
 
-features = dv.get_feature_names_out()
-
-rf = RandomForestRegressor(random_state=42)
-y_full_train = rf.predict(X_full_train)
-
+dtr= DecisionTreeRegressor(random_state=42)
+y_full_train = dtr.predict(X_full_train)
 
 # TRAIN THE MODEL
 
-model = rf.fit(X_full_train,y_full_train)
-
+model = dtr.fit(X_full_train,y_full_train)
 
 # SAVE THE MODEL TO FILE
 
@@ -67,6 +63,3 @@ with open(output_file, 'wb') as f_out:
     pickle.dump((dv, model), f_out)
 
 print(f'The Model is saved to {output_file}')
-
-
-

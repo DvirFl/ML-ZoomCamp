@@ -1,10 +1,5 @@
 # ML Midterm Project - Water Potabilty Prediction
 
-# Disclaimer
-	This README.md file has been modified from the Midterm Project Pizza Prices written by 
-	https://github.com/GermanoC0/course-ml-zoomcamp/tree/main/07-Midterm%20Project
-	for 2021 cohort
-
 # Summary
 1. Problem Description
 2. EDA
@@ -29,6 +24,16 @@ This package contain the following files:
 
 
 ## 1. Problem Description
+
+Access to clean and safe drinking water is a major problem in many developing countries. Many people in these countries do not have access to clean water sources and are forced to use water from lakes, rivers, or other surface water sources, which can be contaminated with bacteria, parasites, and other harmful substances. These contaminants can cause a range of health problems, including diarrhea, cholera, typhoid fever, and other waterborne diseases.
+
+In addition to being contaminated, the water in many developing countries is also often scarce and difficult to access. Many people living in these countries must travel long distances to collect water, and the water they do collect may be polluted or unsafe to drink.
+
+The lack of clean and safe drinking water is a major contributor to poor health and high mortality rates in many developing countries. It is also a significant barrier to economic development, as it can hinder the ability of people to work and contribute to the economy.
+
+Determining water potability from fewer metrics can help reduce costs for detection of drinkable water sources and using different methods to detect and clean hazaredous
+water sources.
+
 This dataset for practice:
 	https://www.kaggle.com/datasets/adityakadiwal/water-potability
 
@@ -53,6 +58,7 @@ I did the following steps:
 4. Convert Potability to boolean
 5. Numerical feature correlation (Heatmap)
 6. Locate and Trim outliers where needed
+7. Feature importance analysis
 
 ## 3. Model Training
 1. Subdivide the dataset to 60-20-20 (train, val, test) using scikit-learn libraries
@@ -67,15 +73,17 @@ I did the following steps:
 	* Decision Tree Regressor
 	* Xgboost Tree Regressor (Tuning eta, max_depth and max_child_weight parameters)
 5. For each models, I check the best RMSE values:
-	* 'Linear Regression RMSE=': 0.8717005362328303,
- 	* 'Ridge Regression (alpha 3) RMSE=': 0.5138463543966755,
- 	* 'SGDRegressor RMSE=': 1.1782828316062282,
- 	* 'SVR RMSE=': 0.4238536795607311,
- 	* 'RandomForestRegressor RMSE=': 0.769604971722506,
- 	* 'DecisionTreeRegressor RMSE=': 0.769604971722506,
-	* 'XgboostRegressor RMSE=': 0.41614005
+	* 'Linear Regression RMSE=': 0.4836550843248386,
+ 	* 'Ridge Regression (alpha 3) RMSE=': 0.48378218440309473,
+ 	*  'SGDRegressor RMSE=': 1.777009303346633e+17,
+ 	*  'SVR RMSE=': 0.5540011794330868,
+ 	*  'RandomForestRegressor RMSE=': 0.45799037427311645,
+ 	*  'DecisionTreeRegressor RMSE=': 0.6331782009405736,
+ 	*  'DecisionTreeRegressor GridCV RMSE=': 0.48144680319178135,
+ 	*  'xgboostRegressor RMSE=': 0.4795955086004447,
+ 	*  'xgboostDARTRegressor RMSE=': 0.49959644873498155
   
-	XgboostRegressor was the model with the best RMSE
+	DecisionTreeRegressor was the model with the best RMSE
 
 ## 4. Exporting notebook to script
 The Jupiter Notebook was exported in Python.
@@ -121,9 +129,18 @@ Manage the service (/predict) and use the model to predict the pizza (sent by PO
 ![Flask_Request_py](Screenshots/flask_request_py.png)
 
 ## 6. Dependency and enviroment management
-#### Prepare the Virtual Environment with PIPENV
+#### Prepare the Virtual Environment with Anaconda3
 
-1. Command: pipenv install numpy pandas scikit-learn==0.24.1 xgboost flask gunicorn requests
+1. Download the file midprojenv.yml
+
+2. In shell run Command: conda env create –file midprojenv.yml
+
+3. Activate the new environment: conda activate myenv
+
+4. Verify that the new environment was installed correctly:
+
+conda env list
+
 
 #### Access or execute scripts from the Virtual Env
 

@@ -3,7 +3,7 @@ from flask import Flask
 from flask import request
 from flask import request
 from flask import jsonify
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
 
 model_file = 'model.bin'
 
@@ -18,10 +18,7 @@ def predict():
 	
 	X = dv.transform([water])
 
-	features = dv.get_feature_names_out()
-	DMatrixPred = RandomForestRegressor.predict(X, feature_names=features)
-
-	y_pred = model.predict(DMatrixPred)
+	y_pred = model.predict(X)
 	water_potability = y_pred
 	
 	result = {
@@ -32,5 +29,5 @@ def predict():
 
 
 if __name__ == "__main__":
-	app.run(debug=True, host='0.0.0.0', port=9090)
+	app.run(debug=True, host='0.0.0.0', port=5000)
 
