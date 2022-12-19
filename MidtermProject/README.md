@@ -18,10 +18,12 @@ This package contain the following files:
 5. model.bin: model and DictVectorize
 6. predict.py: the service which receive the request of price prediction
 7. request: the request of price determination. Invoke the service and sent the POST request.
-8. water_potabilty.csv: the dataset from Kaggle
-9. README.md: this file with instruction.
-10. Screenshots Folder: contain the screenshot included in README.md file
+8. Data folder: contains water_potabilty.csv - the dataset from Kaggle
+9. README.md: this file with instructions.
+10. Screenshots Folder: contain the screenshots included in README.md file
 
+### Important note
+### Many explainations on decision made while coding are in the notebook.ipynb file.
 
 ## 1. Problem Description
 
@@ -120,13 +122,24 @@ Data are encapsulated with json and sent to the service (predict.py)
 Manage the service (/predict) and use the model to predict the pizza (sent by POST method and encapsulate with json) price.
 
 #### Flask test
-1. Run predict.py script
+
+1. You need to open 2 command prompts (one for flask and the other for request) and make sure both of them are in the directory all the files are in.
+
+2. In the first type in the commands:
+set FLASK_APP=predict.py
+set FLASK_ENV=development
+
+3. Run predict.py script by typing:
+flask run
 
 ![Flask_Predict](Screenshots/flask_predict.jpg)
 
-2. Run request.py script
+4. In the second command prompt window run request.py script by typing:
+python request.py
 
 ![Flask_Request](Screenshots/flask_request.jpg)
+
+#### you might have some warnings.
 
 ## 6. Dependency and enviroment management
 #### Prepare the Virtual Environment with Anaconda3
@@ -153,15 +166,12 @@ Create a Docker container with the following steps:
 
 4. sudo docker build -t midtermproj . -> This command build the docker vm (called midtermproj) with the docker file
 
-	The dockerfile copy the pipfiles, predict.py script and the model.bin into the app folder, install the necessary package using pipfiles, starts the service with gunicorn on port 9090
+	The dockerfile copy the pipfiles, predict.py script and the model.bin into the app folder, install the necessary package using pipfiles, starts the service with gunicorn on port 5000
 
 ![Dockerfile](Screenshots/Dockerfile.png)
 
-5. sudo docker run -it --rm -p 9090:9090 midtermproj -> This command starts the service
+5. sudo docker run -it --rm -p 5000:5000 midtermproj -> This command starts the service
 
-6. python request.py -> You can test the services sending a pizza price evaluation
+6. python request.py -> You can test the services sending a water potability evaluation
 
 ![DockerService](Screenshots/Dockerservice.png)
- 
-
- 
