@@ -122,11 +122,11 @@ Manage the service (/predict) and use the model to predict the pizza (sent by PO
 #### Flask test
 1. Run predict.py script
 
-![Flask_Predict_py](Screenshots/flask_predict.png)
+![Flask_Predict](Screenshots/flask_predict.jpg)
 
 2. Run request.py script
 
-![Flask_Request_py](Screenshots/flask_request.png)
+![Flask_Request](Screenshots/flask_request.jpg)
 
 ## 6. Dependency and enviroment management
 #### Prepare the Virtual Environment with Anaconda3
@@ -141,26 +141,6 @@ Manage the service (/predict) and use the model to predict the pizza (sent by PO
 
 conda env list
 
-
-#### Access or execute scripts from the Virtual Env
-
-1. Command to access: pipenv shell
-
-![PipEnv_Access](Screenshots/pipenv_access.png) 
-
-2. Command to execute a command: pipenv cmd
-
-Example launch predict.py from pipenv
-
-pipenv run python predict.py
-
-![PipEnv_Predict_py](Screenshots/pipenv_predict_py.png) 
-
-Example launch request.py from pipenv
-
-pipenv run python request.py
-
-![PipEnv_Predict_Request_py](Screenshots/pipenv_predict_request_py.png) 
 
 ## 7. Containerization
 Create a Docker container with the following steps:
